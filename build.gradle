@@ -27,6 +27,10 @@ allure {
     autoconfigure = true
 }
 
+sourceCompatibility = 11
+targetCompatibility = 11
+gradle.startParameter.continueOnFailure = true
+
 dependencies {
     // test reporting libs
     // https://mvnrepository.com/artifact/io.qameta.allure/allure-testng
