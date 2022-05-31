@@ -38,5 +38,22 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    systemProperties System.getProperties()
+    useTestNG() {
+        options.useDefaultListeners true
+        options.parallel System.getProperty('parallel', 'suites')
+        options.threadCount System.getProperty('threadCount', '1') as int
+        if (System.getProperty("includeGroups") != null) {
+            options.includeGroups System.getProperty("includeGroups")
+        }
+        if (System.getProperty("excludeGroups") != null) {
+            options.excludeGroups System.getProperty("excludeGroups")
+        }
+        if (System.getProperty("suites") != null) {
+            options.suites System.getProperty("suites")
+        }
+        testLogging {
+            events = ['PASSED', 'FAILED', 'SKIPPED']
+        }
+    }
 }
