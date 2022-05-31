@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.HasCapabilities;
 import org.testng.*;
 
-import ta.core.allure.ReportingHelper;
+import ta.core.reporting.allure.ReportingHelper;
 import ta.core.driver.DriverFactory;
 import ta.core.env.Environment;
 
