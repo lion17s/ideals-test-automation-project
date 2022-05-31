@@ -1,3 +1,11 @@
+buildscript {
+    repositories {
+        dependencies {
+            classpath "io.qameta.allure:allure-gradle:2.8.1"
+        }
+    }
+}
+
 plugins {
     id 'idea'
     id 'java'
@@ -14,9 +22,15 @@ repositories {
     mavenCentral()
 }
 
+allure {
+    version = '2.10.0'
+    autoconfigure = true
+}
+
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // test reporting libs
+    // https://mvnrepository.com/artifact/io.qameta.allure/allure-testng
+    implementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.+'
 }
 
 test {
