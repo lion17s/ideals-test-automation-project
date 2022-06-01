@@ -11,7 +11,7 @@ public class HomePage extends BaseUIElement {
     @Step
     public HomePage openHomePage() {
         DriverFactory.getDriver().get(Environment.get("home.page.url"));
-        return new HomePage();
+        return this;
     }
 
     @Step

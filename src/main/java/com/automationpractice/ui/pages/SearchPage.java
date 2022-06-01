@@ -23,6 +23,7 @@ public class SearchPage extends BaseUIElement {
     @FindBy(xpath = "//span[@title='Close window']")
     private WebElement closeProductInfoButton;
 
+    @Step
     public SearchPage addProductToBasket(String productName) {
         productContainerList.forEach(productContainer -> {
             boolean containsProductName = productContainer
