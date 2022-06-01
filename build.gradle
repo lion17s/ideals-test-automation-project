@@ -70,8 +70,12 @@ test {
     systemProperties System.getProperties()
     useTestNG() {
         options.useDefaultListeners true
-        options.parallel System.getProperty('parallel', 'suites')
-        options.threadCount System.getProperty('threadCount', '1') as int
+        if (System.getProperty('parallel') != null) {
+            options.parallel System.getProperty('parallel')
+        }
+        if (System.getProperty('threadCount') != null) {
+            options.threadCount System.getProperty('threadCount') as int
+        }
         if (System.getProperty("includeGroups") != null) {
             options.includeGroups System.getProperty("includeGroups")
         }
