@@ -12,17 +12,16 @@ import java.util.Map;
 public abstract class BaseTest {
 
     @Parameters("env")
-    @BeforeSuite(alwaysRun = true)
-    public void setupEnvironment(@Optional(value = "desktop.chrome") String env) {
+    @BeforeMethod
+    public void setupEnv(@Optional(value = "desktop.chrome") String env) {
         Environment.setEnvironment(env);
     }
 
-    @BeforeMethod
+    @BeforeMethod(dependsOnMethods = "setupEnv")
     public void setupDriver() {
-        String driver = Environment.getCurrentEnvironment().get("driver");
-        Map<String, Object> capabilities = Environment.getCurrentEnvironment().getOrDefault(driver, new HashMap<>());
+        String driver = Environment.get("driver");
+        Map<String, Object> capabilities = Environment.getOrDefault(driver, new HashMap<>());
         DriverFactory.setDriver(driver, capabilities);
-
     }
 
     @AfterMethod
